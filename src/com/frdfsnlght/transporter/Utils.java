@@ -140,7 +140,7 @@ public class Utils {
     }
 
     public static String block(Block b) {
-        return String.format("Block[%s,%d]", b.getType(), b.getData());
+        return String.format("Block[%s,%s]", b.getType(), b.getType().name());
     }
 
     public static String blockCoords(Location loc) {
@@ -392,14 +392,14 @@ public class Utils {
 
     public static int worker(Runnable run) {
         if (! Global.enabled) return -1;
-        return Global.plugin.getServer().getScheduler().scheduleAsyncDelayedTask(Global.plugin, run);
+        return Global.plugin.getServer().getScheduler().scheduleSyncDelayedTask(Global.plugin, run);
     }
 
     // delay is millis
     public static int workerDelayed(Runnable run, long delay) {
         if (! Global.enabled) return -1;
         long ticks = delay / 50;
-        return Global.plugin.getServer().getScheduler().scheduleAsyncDelayedTask(Global.plugin, run, ticks);
+        return Global.plugin.getServer().getScheduler().scheduleSyncDelayedTask(Global.plugin, run, ticks);
     }
 
     public static void cancelTask(int taskId) {

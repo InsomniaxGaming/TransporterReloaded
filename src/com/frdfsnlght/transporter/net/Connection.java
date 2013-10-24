@@ -145,6 +145,7 @@ public final class Connection {
             for (Byte b : out) f.format("%02x", b);
             message.put("key", f.toString());
             sendMessage(message, false);
+            f.close();
         } catch (NoSuchAlgorithmException e) {
             Utils.severe(e, "unable to create handshake message");
         } catch (UnsupportedEncodingException e) {}
@@ -418,6 +419,7 @@ public final class Connection {
                         Formatter f = new Formatter();
                         byte[] out = dig.digest((serv.getKey() + ":" + Network.getCachedKey()).getBytes("UTF-8"));
                         for (Byte b : out) f.format("%02x", b);
+                        f.close();
                         if (f.toString().equals(key)) {
                             Utils.info("server key match detected for '%s' on connection with %s", serv.getName(), getName());
                             if (serv.isEnabled()) {

@@ -157,6 +157,7 @@ public class BlockListenerImpl implements Listener {
                         Utils.warning(ee.getMessage());
                     }
                 }
+                return;
             }
 
             else if (gate.isOpen() && (block.getTriggerCloseMode() != RedstoneMode.NONE)) {
@@ -169,8 +170,8 @@ public class BlockListenerImpl implements Listener {
                     gate.close();
                     Utils.debug("gate '%s' closed via redstone", gate.getName());
                 }
+                return;
             }
-            return;
         }
 
         g = Gates.findGateForSwitch(event.getBlock().getLocation());

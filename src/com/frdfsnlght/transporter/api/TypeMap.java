@@ -208,7 +208,7 @@ public final class TypeMap extends HashMap<String,Object> implements Cloneable {
         return "{\n" + pad(buf.toString()) + "\n}";
     }
 
-    private static String encodeList(Collection v) {
+    private static String encodeList(Collection<Object> v) {
         StringBuilder buf = new StringBuilder("v:");
         buf.append(v.size()).append(":");
         for (Object o : v)
@@ -226,7 +226,7 @@ public final class TypeMap extends HashMap<String,Object> implements Cloneable {
         return l;
     }
 
-    private static String stringifyList(Collection v) {
+    private static String stringifyList(Collection<Object> v) {
         StringBuilder buf = new StringBuilder();
         for (Object o : v)
             buf.append(stringifyObject(o)).append("\n");

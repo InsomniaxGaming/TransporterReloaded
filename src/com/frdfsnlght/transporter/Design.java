@@ -301,8 +301,8 @@ public class Design {
         for (Object o : blocksMap) {
             z++;
             if ((! (o instanceof List)) ||
-                ((List)o).isEmpty() ||
-                (! (((List)o).get(0) instanceof String)))
+                ((List<Object>)o).isEmpty() ||
+                (! (((List<Object>)o).get(0) instanceof String)))
                 throw new DesignException("block slice %d is not a list of strings", z);
             List<String> lines = (List<String>)o;
             if (sizeY == -1)

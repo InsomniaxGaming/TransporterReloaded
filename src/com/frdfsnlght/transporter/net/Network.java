@@ -521,7 +521,7 @@ public final class Network {
                 }
 
                 if (selector.select(selectInterval) > 0) {
-                    Iterator keys = selector.selectedKeys().iterator();
+                    Iterator<SelectionKey> keys = selector.selectedKeys().iterator();
                     while (keys.hasNext()) {
                         SelectionKey selKey = (SelectionKey)keys.next();
                         keys.remove();
