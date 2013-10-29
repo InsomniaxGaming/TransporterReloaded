@@ -15,20 +15,16 @@
  */
 package com.frdfsnlght.transporter;
 
-import com.nijiko.permissions.PermissionHandler;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
-import java.util.Set;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.RegisteredServiceProvider;
-import ru.tehkode.permissions.PermissionManager;
-import ru.tehkode.permissions.bukkit.PermissionsEx;
 
 /**
  * @author frdfsnlght <frdfsnlght@gmail.com>
@@ -49,8 +45,8 @@ public final class Permissions {
 
     private static boolean basicPermsInitted = false;
     private static net.milkbowl.vault.permission.Permission vaultPlugin = null;
-    private static PermissionHandler permissionsPlugin = null;
-    private static PermissionManager permissionsExPlugin = null;
+    //private static PermissionHandler permissionsPlugin = null;
+    //private static PermissionManager permissionsExPlugin = null;
 
     public static boolean basicPermsAvailable() {
         if (basicPermsInitted) return true;
@@ -86,7 +82,7 @@ public final class Permissions {
         return true;
     }
 
-    public static boolean permissionsAvailable() {
+    /*public static boolean permissionsAvailable() {
         if (! Config.getUsePermissions()) return false;
         Plugin p = Global.plugin.getServer().getPluginManager().getPlugin("Permissions");
         if (p == null) {
@@ -105,9 +101,9 @@ public final class Permissions {
         }
         Utils.info("Initialized Permissions for Permissions");
         return true;
-    }
+    }*/
 
-    public static boolean permissionsExAvailable() {
+    /*public static boolean permissionsExAvailable() {
         if (! Config.getUsePermissionsEx()) return false;
         Plugin p = Global.plugin.getServer().getPluginManager().getPlugin("PermissionsEx");
         if (p == null) {
@@ -126,7 +122,7 @@ public final class Permissions {
         }
         Utils.info("Initialized PermissionsEx for Permissions");
         return true;
-    }
+    }*/
 
     public static boolean hasBasic(Player player, String perm) {
         return hasBasic(player.getName(), perm);
@@ -222,7 +218,7 @@ public final class Permissions {
             return;
         }
 
-        if (permissionsAvailable()) {
+        /*if (permissionsAvailable()) {
             for (String perm : perms) {
                 if (requireAll) {
                     if (! permissionsPlugin.permission(worldName, playerName, perm))
@@ -234,9 +230,9 @@ public final class Permissions {
             if ((! requireAll) && (perms.length > 0))
                 throw new PermissionsException("not permitted");
             return;
-        }
+        }*/
 
-        if (permissionsExAvailable()) {
+        /*if (permissionsExAvailable()) {
             for (String perm : perms) {
                 if (requireAll) {
                     if (! permissionsExPlugin.has(playerName, perm, worldName))
@@ -248,7 +244,7 @@ public final class Permissions {
             if ((! requireAll) && (perms.length > 0))
                 throw new PermissionsException("not permitted");
             return;
-        }
+        }*/
 
         if (basicPermsAvailable()) {
             for (String perm : perms) {
@@ -294,7 +290,7 @@ public final class Permissions {
     }
 
     public static boolean isOp(String playerName) {
-        Set<OfflinePlayer> ops = Global.plugin.getServer().getOperators();
+        //Set<OfflinePlayer> ops = Global.plugin.getServer().getOperators();
         for (OfflinePlayer p : Global.plugin.getServer().getOperators())
             if (p.getName().equalsIgnoreCase(playerName)) return true;
         return false;
